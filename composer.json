@@ -1,5 +1,5 @@
 {
-    "name": "needle-project/laravel-rabbitmq",
+    "name": "gt-volk/laravel-rabbitmq",
     "description": "Simple rabbitmq integration for Laravel",
     "license": "MIT",
     "authors": [
