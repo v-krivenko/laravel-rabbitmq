@@ -317,6 +317,8 @@ class QueueEntity implements PublisherInterface, ConsumerInterface, AMQPEntityIn
      */
     protected function shouldStopConsuming(): bool
     {
+        return false;
+
         if ((microtime(true) - $this->startTime) > $this->limitSecondsUptime) {
             $this->logger->debug(
                 "Stopped consumer",
