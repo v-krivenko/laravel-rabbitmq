@@ -150,8 +150,7 @@ class AbstractMessageProcessorTest extends TestCase
         $amqpMessage->delivery_info['channel'] = $channelMock;
 
         $loggerMock->expects($this->once())
-            ->method('error')
-            ->willReturn(null);
+            ->method('error');
         $messageProcessor->consume($amqpMessage);
     }
 
@@ -186,8 +185,7 @@ class AbstractMessageProcessorTest extends TestCase
 
         $loggerMock->expects($this->atLeastOnce())
             ->method('debug')
-            ->with('Did not processed with success message foo')
-            ->willReturn(null);
+            ->with('Did not processed with success message foo');
         $messageProcessor->consume($amqpMessage);
     }
 }
