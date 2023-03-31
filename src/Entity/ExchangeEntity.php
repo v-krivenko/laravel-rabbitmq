@@ -62,7 +62,7 @@ class ExchangeEntity implements PublisherInterface, AMQPEntityInterface
     protected $attributes;
 
     /**
-     * @var int 
+     * @var int
      */
     protected $retryCount = 0;
 
@@ -192,10 +192,11 @@ class ExchangeEntity implements PublisherInterface, AMQPEntityInterface
      *
      * @param string $message
      * @param string $routingKey
+     * @param array $properties
      * @return mixed|void
      * @throws AMQPProtocolChannelException
      */
-    public function publish(string $message, string $routingKey = '')
+    public function publish(string $message, string $routingKey = '', array $properties = [])
     {
         if ($this->attributes['auto_create'] === true) {
             $this->create();
@@ -203,7 +204,7 @@ class ExchangeEntity implements PublisherInterface, AMQPEntityInterface
         }
         try {
             $this->getChannel()->basic_publish(
-                new AMQPMessage($message),
+                new AMQPMessage($message, $properties),
                 $this->attributes['name'],
                 $routingKey,
                 true
